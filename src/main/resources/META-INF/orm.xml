@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+	xmlns:xsi="http//www.w3.org/2001/XMLSchema-instance"
+	xsi:schemalocation="http://xmlns.jcp.org/xml/ns/persistence/orm
+		http://xmlns.jcp.org/xml/ns/persistence/orm_2_2/xsd" version="2.2">
+		
+		<entity class="co.edu.usbcali.viajesusb.domain.Cliente">
+			<named-native-query name="Cliente.consultarClientesPorEstadoNoIdentificacionTipoIdentificacion" resul-set-mapping="consultarClientesPorEstadoNoIdentificacionTipoIdentificacion">
+			<query>
+				select nombre Nombre 
+				from cliente cl
+				where cl.estado = :pEstado 
+				and cl.numero_identificacion = :pNumeroIdentificacion
+				and cl.nombre like :pNombre
+				order by nombre asc;
+			</query>
+			</named-native-query>
+			
+			<named-native-query name="Cliente.ultimaConsulta" result-set-mapping="ultimaConsulta">
+			<query>
+				select numero_identificacion noIdent,
+				nombre nombreCl,
+				estado estadoCl
+				from cliente cl 
+				where cl.nombre like :pNombre
+				order by cl.numero_identificacion asc 
+				
+			
+			
+			</query>
+			
+			
+			
+			</named-native-query>
+		
+		</entity>
+				
+
+
+</entity-mappings>
